@@ -49,8 +49,9 @@ class OverviewViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val listResult = MarsApi.retrofitService.getPhotos()
-                _status.value = listResult
+                _status.value = "the first url is ${listResult.get(0).imgSrcUrl}"
             }
+                    //"Success: ${listResult.size} Mars photos retrieved"            }
             catch (e: Exception) {
                 _status.value = "Failure: ${e.message}"
             }
